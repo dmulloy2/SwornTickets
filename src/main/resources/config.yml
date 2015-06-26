@@ -1,0 +1,46 @@
+# ShadowTickets Config
+# By dmulloy2
+
+# Maximum tickets per user
+maxTickets: 3
+
+# Number of days before a closed ticket expires
+ticketExpiration: 7
+
+# Whether or not to notify admins when tickets are closed
+notifyAdminOnTicketClose: true
+
+# Display personal tickets or total tickets
+onJoin:
+  displayTicketsStaff: true
+  displayTicketsUser: true
+
+# Which backend to use (YAML, SQLite, MySQL)
+backend: YAML
+
+# MySQL settings
+mySQL:
+  hostname: localhost
+  hostport: 3306
+  database: tickets
+  user: MYSQLUSER
+  password: MYSQLPASS
+
+# Labels
+labels:
+  bug:
+    name: "Bug"
+    format: "&4[Bug]"
+    description: "&cA fault in the server software"
+  feature:
+    name: "Feature"
+    format: "&2[Feature]"
+    description: "&aSomething you would like added to the server"
+  staff:
+    name: "Staff"
+    format: "&5[Staff]"
+    description: "&dRelating to staff and their actions"
+  help:
+    name: "Help"
+    format: "&6[Help]"
+    description: "&eGeneral server help"

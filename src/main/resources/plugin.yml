@@ -1,0 +1,45 @@
+name: SwornTickets
+main: net.dmulloy2.sworntickets.SwornTickets
+version: ${project.version}${project.build.number}
+author: dmulloy2
+description: Comprehensive ticket plugin allowing users to request help and report bugs.
+commands:
+  ticket:
+    description: SwornTickets base command
+    usage: /<command> <args>
+    aliases: [tickets, st]
+
+permissions:
+  sworntickets.admin:
+    default: false
+    children:
+      sworntickets.cmd.delete: true
+      sworntickets.cmd.reload: true
+      sworntickets.cmd.version: true
+      sworntickets.moderator: true
+  sworntickets.moderator:
+    default: false
+    children:
+      sworntickets.cmd.assign: true
+      sworntickets.cmd.list: true
+      sworntickets.cmd.reply: true
+  sworntickets.cmd.assign:
+    default: false
+  sworntickets.cmd.check:
+    default: true
+  sworntickets.cmd.close:
+    default: true
+  sworntickets.cmd.delete:
+    default: false
+  sworntickets.cmd.label:
+    default: true
+  sworntickets.cmd.list:
+    default: false
+  sworntickets.cmd.open:
+    default: true
+  sworntickets.cmd.reload:
+    default: false
+  sworntickets.cmd.reply:
+    default: false
+  sworntickets.cmd.version:
+    default: false
