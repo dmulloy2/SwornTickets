@@ -66,6 +66,8 @@ public class SwornTickets extends SwornPlugin {
 	private Backend backend;
 	private TicketDataCache dataCache;
 
+	private PlayerListener listener;
+
 	private final String prefix = FormatUtil.format("&3[&eSwornTickets&3]&e ");
 
 	@Override
@@ -106,7 +108,8 @@ public class SwornTickets extends SwornPlugin {
 
 		// Register listener
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new PlayerListener(this), this);
+		listener = new PlayerListener(this);
+		pm.registerEvents(listener, this);
 
 		// Backend
 
@@ -167,7 +170,10 @@ public class SwornTickets extends SwornPlugin {
 
 	@Override
 	public void reload() {
+		reloadConfig();
 
+		listener.reload();
+		Label.loadLabels(this);
 	}
 
 	private int expireTickets() {

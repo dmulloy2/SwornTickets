@@ -22,13 +22,13 @@
 package net.dmulloy2.sworntickets.commands;
 
 import net.dmulloy2.sworntickets.SwornTickets;
-import net.dmulloy2.sworntickets.tickets.Label;
 import net.dmulloy2.sworntickets.types.Permission;
 
 /**
  * @author dmulloy2
  */
 public class CmdReload extends SwornTicketsCommand {
+
 	public CmdReload(SwornTickets plugin) {
 		super(plugin);
 		this.name = "reload";
@@ -44,7 +44,6 @@ public class CmdReload extends SwornTicketsCommand {
 		sendpMessage("&aReloading {0}...", plugin.getName());
 
 		plugin.reload();
-		Label.loadLabels(plugin);
 
 		sendpMessage("&aReload Complete! Took {0} ms!", System.currentTimeMillis() - start);
 		plugin.getLogHandler().log("Reload complete! Took {0} ms!", System.currentTimeMillis() - start);

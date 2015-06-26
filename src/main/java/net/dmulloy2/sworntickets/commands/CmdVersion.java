@@ -39,9 +39,9 @@ public class CmdVersion extends SwornTicketsCommand {
 
 	@Override
 	public void perform() {
-		sendMessage("&3====[ &eShadowTickets &3]====");
+		sendMessage("&3---- &eSwornTickets &3----");
 		sendMessage("&eVersion: &b{0}", plugin.getDescription().getVersion());
 		sendMessage("&eAuthor: &bdmulloy2");
-		sendMessage("&eIssues: &b/ticket");
+		sendMessage("&eIssues:&b https://github.com/dmulloy2/SwornTickets/issues");
 	}
 }

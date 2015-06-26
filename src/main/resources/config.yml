@@ -2,6 +2,7 @@
 # By dmulloy2
 
 # Maximum tickets per user
+# Set to -1 to disable
 maxTickets: 3
 
 # Number of days before a closed ticket expires

@@ -37,7 +37,6 @@ import org.bukkit.entity.Player;
  * @author dmulloy2
  */
 public class CmdClose extends SwornTicketsCommand {
-	private static final long WEEK = TimeUnit.DAYS.toMillis(7);
 
 	public CmdClose(SwornTickets plugin) {
 		super(plugin);
@@ -56,7 +55,8 @@ public class CmdClose extends SwornTicketsCommand {
 		}
 
 		if (ticket.isOpen()) {
-			long expiration = System.currentTimeMillis() + WEEK;
+			int days = plugin.getConfig().getInt("ticketExpiration", 7);
+			long expiration = System.currentTimeMillis() + TimeUnit.DAYS.toMillis(days);
 			Event close = Event.create(EventType.CLOSE, sender, Long.toString(expiration));
 			ticket.addEvent(close);
 

@@ -21,6 +21,8 @@
  */
 package net.dmulloy2.sworntickets.commands;
 
+import java.util.List;
+
 import net.dmulloy2.sworntickets.SwornTickets;
 import net.dmulloy2.sworntickets.tickets.Ticket;
 import net.dmulloy2.sworntickets.types.Permission;
@@ -42,6 +44,16 @@ public class CmdOpen extends SwornTicketsCommand {
 
 	@Override
 	public void perform() {
+		// Make sure they're not over the limit
+		int maxTickets = plugin.getConfig().getInt("maxTickets", 3);
+		if (maxTickets != -1 && ! hasPermission(Permission.MODERATOR)) {
+			List<Ticket> tickets = plugin.getDataCache().getTicketsFor(player, false);
+			if (tickets.size() >= maxTickets) {
+				err("You have too many open tickets! Max is &c{0}.", maxTickets);
+				return;
+			}
+		}
+
 		String description = getFinalArg(0);
 		Ticket ticket = plugin.getDataCache().newTicket(player, description);
 		sendpMessage("&eYou have opened ticket #&b{0}", ticket.getId());
