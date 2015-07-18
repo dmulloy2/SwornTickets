@@ -67,7 +67,7 @@ public class CmdLabel extends SwornTicketsCommand {
 
 					sendMessage(builder.create());
 				} else {
-					err("There are no tickets to display.");
+					err("There are no labels to display.");
 				}
 
 				return;
