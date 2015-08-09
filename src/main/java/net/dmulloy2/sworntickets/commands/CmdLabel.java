@@ -31,7 +31,8 @@ import net.dmulloy2.sworntickets.tickets.Label;
 import net.dmulloy2.sworntickets.tickets.Ticket;
 import net.dmulloy2.sworntickets.types.Permission;
 import net.dmulloy2.util.FormatUtil;
-import net.md_5.bungee.api.ChatColor;
+
+import org.bukkit.ChatColor;
 
 /**
  * @author dmulloy2

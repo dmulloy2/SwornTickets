@@ -37,7 +37,8 @@ import net.dmulloy2.sworntickets.types.Permission;
 import net.dmulloy2.types.LazyLocation;
 import net.dmulloy2.util.FormatUtil;
 import net.dmulloy2.util.TimeUtil;
-import net.md_5.bungee.api.ChatColor;
+
+import org.bukkit.ChatColor;
 
 /**
  * @author dmulloy2
