@@ -145,4 +145,8 @@ public abstract class SQLBackend extends Backend {
 	}
 
 	protected abstract String getTableName();
+
+	@Override
+	public void save(Map<Integer, Ticket> tickets) {
+	}
 }

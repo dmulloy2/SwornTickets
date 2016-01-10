@@ -23,6 +23,7 @@ permissions:
       sworntickets.cmd.assign: true
       sworntickets.cmd.list: true
       sworntickets.cmd.reply: true
+      sworntickets.cmd.teleport: true
   sworntickets.cmd.assign:
     default: false
   sworntickets.cmd.check:
@@ -40,6 +41,8 @@ permissions:
   sworntickets.cmd.reload:
     default: false
   sworntickets.cmd.reply:
+    default: false
+  sworntickets.cmd.teleport:
     default: false
   sworntickets.cmd.version:
     default: false

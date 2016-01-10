@@ -55,7 +55,10 @@ public class CmdOpen extends SwornTicketsCommand {
 		}
 
 		String description = getFinalArg(0);
-		Ticket ticket = plugin.getDataCache().newTicket(player, description);
-		sendpMessage("&eYou have opened ticket #&b{0}", ticket.getId());
+
+		sendpMessage("&eYou are about to open a new ticket: &r{0}", description);
+		sendpMessage("&eType &b/ticket &3confirm &eor &b/ticket &3cancel");
+
+		plugin.getPending().put(player, description);
 	}
 }

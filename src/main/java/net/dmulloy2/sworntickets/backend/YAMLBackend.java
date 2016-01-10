@@ -87,4 +87,22 @@ public class YAMLBackend extends Backend {
 			return null;
 		}
 	}
+
+	@Override
+	public boolean delete(int id) {
+		return false;
+	}
+
+	@Override
+	public boolean add(Ticket ticket) {
+		return false;
+	}
+
+	@Override
+	public void update(Ticket ticket) {
+	}
+
+	@Override
+	public void shutdown() {
+	}
 }

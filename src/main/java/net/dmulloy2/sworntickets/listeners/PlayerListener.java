@@ -34,6 +34,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  * @author dmulloy2
@@ -64,6 +65,14 @@ public class PlayerListener implements Listener, Reloadable {
 			if (tickets.size() > 0) {
 				player.sendMessage(plugin.getPrefix() + FormatUtil.format("You have &b{0} &eopen tickets.", tickets.size()));
 			}
+		}
+	}
+
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerQuit(PlayerQuitEvent event) {
+		Player player = event.getPlayer();
+		if (plugin.getPending().containsKey(player)) {
+			plugin.getPending().remove(player);
 		}
 	}
 

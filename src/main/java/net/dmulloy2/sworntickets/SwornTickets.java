@@ -22,6 +22,7 @@
 package net.dmulloy2.sworntickets;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
@@ -38,14 +39,17 @@ import net.dmulloy2.sworntickets.backend.YAMLBackend;
 import net.dmulloy2.sworntickets.backend.sql.MySQLBackend;
 import net.dmulloy2.sworntickets.backend.sql.SQLiteBackend;
 import net.dmulloy2.sworntickets.commands.CmdAssign;
+import net.dmulloy2.sworntickets.commands.CmdCancel;
 import net.dmulloy2.sworntickets.commands.CmdCheck;
 import net.dmulloy2.sworntickets.commands.CmdClose;
+import net.dmulloy2.sworntickets.commands.CmdConfirm;
 import net.dmulloy2.sworntickets.commands.CmdDelete;
 import net.dmulloy2.sworntickets.commands.CmdLabel;
 import net.dmulloy2.sworntickets.commands.CmdList;
 import net.dmulloy2.sworntickets.commands.CmdOpen;
 import net.dmulloy2.sworntickets.commands.CmdReload;
 import net.dmulloy2.sworntickets.commands.CmdReply;
+import net.dmulloy2.sworntickets.commands.CmdTeleport;
 import net.dmulloy2.sworntickets.commands.CmdVersion;
 import net.dmulloy2.sworntickets.data.TicketDataCache;
 import net.dmulloy2.sworntickets.listeners.PlayerListener;
@@ -56,6 +60,7 @@ import net.dmulloy2.util.FormatUtil;
 import net.dmulloy2.util.Util;
 
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
 /**
@@ -67,6 +72,8 @@ public class SwornTickets extends SwornPlugin {
 	private TicketDataCache dataCache;
 
 	private PlayerListener listener;
+
+	private Map<Player, String> pending;
 
 	private final String prefix = FormatUtil.format("&3[&eSwornTickets&3]&e ");
 
@@ -95,8 +102,10 @@ public class SwornTickets extends SwornPlugin {
 		// Register commands
 		commandHandler.setCommandPrefix("ticket");
 		commandHandler.registerPrefixedCommand(new CmdAssign(this));
+		commandHandler.registerPrefixedCommand(new CmdCancel(this));
 		commandHandler.registerPrefixedCommand(new CmdCheck(this));
 		commandHandler.registerPrefixedCommand(new CmdClose(this));
+		commandHandler.registerPrefixedCommand(new CmdConfirm(this));
 		commandHandler.registerPrefixedCommand(new CmdDelete(this));
 		commandHandler.registerPrefixedCommand(new CmdHelp(this));
 		commandHandler.registerPrefixedCommand(new CmdLabel(this));
@@ -104,6 +113,7 @@ public class SwornTickets extends SwornPlugin {
 		commandHandler.registerPrefixedCommand(new CmdOpen(this));
 		commandHandler.registerPrefixedCommand(new CmdReload(this));
 		commandHandler.registerPrefixedCommand(new CmdReply(this));
+		commandHandler.registerPrefixedCommand(new CmdTeleport(this));
 		commandHandler.registerPrefixedCommand(new CmdVersion(this));
 
 		// Register listener
@@ -164,6 +174,9 @@ public class SwornTickets extends SwornPlugin {
 
 		// Shutdown backend
 		backend.shutdown();
+
+		// Clear pending
+		pending.clear();
 
 		logHandler.log("{0} has been disabled. Took {1} ms.", getDescription().getFullName(), System.currentTimeMillis() - start);
 	}

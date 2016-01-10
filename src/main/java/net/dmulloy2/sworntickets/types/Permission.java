@@ -41,6 +41,7 @@ public enum Permission implements IPermission {
 	CMD_OPEN("cmd.open"),
 	CMD_RELOAD("cmd.reload"),
 	CMD_REPLY("cmd.reply"),
+	CMD_TELEPORT("cmd.teleport"),
 	CMD_VERSION("cmd.version"),
 
 	MODERATOR("moderator"),

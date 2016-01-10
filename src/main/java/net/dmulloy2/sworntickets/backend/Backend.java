@@ -38,23 +38,13 @@ public abstract class Backend {
 
 	public abstract Map<Integer, Ticket> load();
 
-	public void save(Map<Integer, Ticket> tickets) {
-		//
-	}
+	public abstract void save(Map<Integer, Ticket> tickets);
 
-	public boolean delete(int id) {
-		return true;
-	}
+	public abstract boolean delete(int id);
 
-	public boolean add(Ticket ticket) {
-		return true;
-	}
+	public abstract boolean add(Ticket ticket);
 
-	public void update(Ticket ticket) {
-		//
-	}
+	public abstract void update(Ticket ticket);
 
-	public void shutdown() {
-		//
-	}
+	public abstract void shutdown();
 }
