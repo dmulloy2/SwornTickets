@@ -22,6 +22,7 @@
 package net.dmulloy2.sworntickets;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -73,7 +74,7 @@ public class SwornTickets extends SwornPlugin {
 
 	private PlayerListener listener;
 
-	private Map<Player, String> pending;
+	private Map<Player, String> pending = new HashMap<>();
 
 	private final String prefix = FormatUtil.format("&3[&eSwornTickets&3]&e ");
 
